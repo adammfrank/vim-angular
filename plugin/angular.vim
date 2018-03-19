@@ -100,7 +100,7 @@ function! s:adamcase(word) abort
   let word = substitute(a:word,'::','/','g')
   let word = substitute(word,'\(\u\+\)\(\u\l\)','\1\2','g')
   let word = substitute(word,'\(\l\|\d\)\(\u\)','\1\2','g')
-  let word = substitute(word,'_\([a-zA-Z]\+\)$','\L.\1','g')
+  let word = substitute(word,'_\([a-zA-Z]\+\)$','.\L\1','g')
   return word
 
 endfunction
