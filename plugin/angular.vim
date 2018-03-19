@@ -158,7 +158,7 @@ function! s:FindFileBasedOnAngularServiceUnderCursor(cmd) abort
   let l:queries = [
     \ l:filethatmayexistverbatim,
     \ l:filethatmayexistdashcase,
-    \ l:filethatmayexistngdotcase
+    \ l:filethatmayexistngdotcase,
     \ l:filethatmayexistadamcase
     \ ]
 
