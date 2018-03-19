@@ -98,6 +98,7 @@ endfunction
 " My custom case
 function! s:adamcase(word) abort
   let word = substitute(a:word,'::','/','g')
+  let word = subsitiute(word, '\(.*\)', '\l\1', 'g')
   let word = substitute(word,'Service$','.service','g')
   return word
 
