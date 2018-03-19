@@ -95,6 +95,17 @@ function! s:Find(...) abort
   endif
 endfunction
 
+" My custom case
+function! s:adamcase(word) abort
+  let word = substitute(a:word,'::','/','g')
+  let word = substitute(word,'\(\u\+\)\(\u\l\)','\1\2','g')
+  let word = substitute(word,'\(\l\|\d\)\(\u\)','\1_\2','g')
+  let word = substitute(word,'_\([a-zA-Z]\+\)$','.\1','g')
+  return word
+
+endfunction
+
+
 
 " Helper
 " jacked from abolish.vim (was s:snakecase there). thank you, tim pope.
@@ -138,14 +149,17 @@ function! s:FindFileBasedOnAngularServiceUnderCursor(cmd) abort
   let l:wordundercursor = expand('<cword>')
   let l:dashcased = s:dashcase(l:wordundercursor)
   let l:ngdotcased = s:dashcasewithngtype(l:wordundercursor)
+  let l:adamcased = s:adamcase(l:wordundercursor)
   let l:filethatmayexistverbatim = l:wordundercursor . '.js'
   let l:filethatmayexistdashcase = l:dashcased . '.js'
   let l:filethatmayexistngdotcase = l:ngdotcased . '.js'
+  let l:filethatmayexistadamcase = l:adamcased . '.js'
 
   let l:queries = [
     \ l:filethatmayexistverbatim,
     \ l:filethatmayexistdashcase,
     \ l:filethatmayexistngdotcase
+    \ l:filethatmayexistadamcase
     \ ]
 
   for query in l:queries
