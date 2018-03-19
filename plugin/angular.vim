@@ -62,7 +62,6 @@ function! s:Find(...) abort
   endif
 
   let l:command="find ".path." -type f -iname '*".query."*'".ignore
-  echo l:command
   let l:list=system(l:command)
   let l:num=strlen(substitute(l:list, "[^\n]", "", "g"))
 
